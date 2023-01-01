@@ -2,7 +2,7 @@
     import {PUBLIC_BEATSAVER_API_URL} from "$env/static/public";
 </script>
 
-<div class="absolute bottom-3 left-3">
+<div class="fixed bottom-3 left-3">
     <div class="dropdown dropdown-top">
         <label tabindex="0" class="btn m-1">Privacy</label>
         <div tabindex="0" class="dropdown-content card card-bordered bg-gray-900 w-96 z-10">
