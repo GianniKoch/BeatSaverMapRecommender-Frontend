@@ -1,5 +1,5 @@
 <script>
-    import {PUBLIC_BEATSAVER_API_URL} from "$env/static/public";
+    import {env} from "$env/dynamic/public";
 </script>
 
 <div class="fixed bottom-3 left-3">
@@ -13,7 +13,7 @@
                     Your behavior is not tracked by me.<br>
                     No profile is created of you by me.<br>
                     The data used for these recommendations is not linked to your identity and is purely based
-                    on the <a href="{PUBLIC_BEATSAVER_API_URL}" class="underline">BeatSaver API</a>.<br>
+                    on the <a href="{env.PUBLIC_BEATSAVER_API_URL}" class="underline">BeatSaver API</a>.<br>
                 </p>
             </div>
         </div>
