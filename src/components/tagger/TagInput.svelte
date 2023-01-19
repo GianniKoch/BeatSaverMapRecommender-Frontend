@@ -7,5 +7,5 @@
     <label class="label">
         <span class="label-text text-md">{tagLabel}</span>
     </label>
-    <input type="range" min="0" max="100" value="0" class="range range-sm" step="20"/>
+    <input type="range" name={tagLabel} min="0" max="100" value="0" class="range range-sm" step="20"/>
 </div>

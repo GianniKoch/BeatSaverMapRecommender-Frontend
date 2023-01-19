@@ -7,7 +7,30 @@ export async function getRecommendation(song_id: string, difficulty: number, cha
     return await response.json()
 }
 
+export async function getNextSection() {
+    const response = await fetch(`${env.PUBLIC_BACKEND_API_URL}/Section`)
+    const json = await response.json()
+    return [json.beatMapId, json.startTime]
+}
 
+export async function setSectionTags(beatMapId: string, startTime: number, tags: []) {
+    const body = {
+        section: {
+            beatMapId,
+            startTime
+        },
+        tags
+    }
+    console.log(body)
+    const response = await fetch(`${env.PUBLIC_BACKEND_API_URL}/Section`, {
+        method: 'post',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+    })
+    return await response.json()
+}
 
 export function idToChar(id: number) {
     switch (id) {
