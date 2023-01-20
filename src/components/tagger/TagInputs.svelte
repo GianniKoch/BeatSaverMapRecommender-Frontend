@@ -3,25 +3,33 @@
     import {setSectionTags} from "../../services/RecommendationBackendService";
     import {to_number} from "svelte/internal";
 
+    export let tags: string[];
     export let mapId: string;
     export let time: number;
-    export let loadNextSection = () => {
-    };
+    export let loadNextSection = () => {};
 
-    const onSubmit = async (e) => {
-        const formData = new FormData(e.target);
-
-        const tags = [];
-        for (let field of formData) {
-            const [tag, value] = field;
-            tags.push({tag, value: to_number(value)});
-        }
-        await setSectionTags(mapId, time, tags)
-        loadNextSection()
+    function refreshTags() {
+        const old = tags;
+        tags = [];
+        setTimeout(() => tags = old, 1);
     }
 
-    const tags = ["TrueAcc", "Acc", "TechAcc", "Dance", "Fitness", "Tech", "SpeedTech", "Balanced",
-        "MidSpeed", "Speed", "HighSpeed", "Challenge", "Meme"];
+    let onSubmit = async (e) => {
+        const formData = new FormData(e.target);
+
+        const values = [];
+        for (let field of formData) {
+            const [tag, value] = field;
+            values.push({tag, value: to_number(value)});
+        }
+
+        await setSectionTags(mapId, time, values);
+
+        await loadNextSection();
+
+        refreshTags();
+    }
+
 </script>
 
 <form class="grid grid-cols-2 gap-2 px-5" on:submit|preventDefault={onSubmit}>

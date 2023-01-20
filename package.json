@@ -24,6 +24,7 @@
 	"dependencies": {
 		"@sveltejs/adapter-node": "^1.0.0",
 		"@tailwindcss/typography": "^0.5.8",
-		"daisyui": "^2.46.0"
+		"daisyui": "^2.46.0",
+		"svelte-loading-spinners": "^0.3.4"
 	}
 }
