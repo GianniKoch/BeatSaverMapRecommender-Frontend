@@ -8,9 +8,15 @@ export async function getRecommendation(song_id: string, difficulty: number, cha
 }
 
 export async function getNextSection() {
-    const response = await fetch(`${env.PUBLIC_BACKEND_API_URL}/Section`)
-    const json = await response.json()
-    return [json.beatMapId, json.startTime]
+    console.log("test")
+    const response = await window.fetch(`${env.PUBLIC_BACKEND_API_URL}/Section`)
+    console.log("test2")
+    return await response.json()
+}
+
+export async function getTags() {
+    const response = await window.fetch(`${env.PUBLIC_BACKEND_API_URL}/Tag`)
+    return await response.json()
 }
 
 export async function setSectionTags(beatMapId: string, startTime: number, tags: []) {
@@ -21,15 +27,14 @@ export async function setSectionTags(beatMapId: string, startTime: number, tags:
         },
         tags
     }
-    console.log(body)
-    const response = await fetch(`${env.PUBLIC_BACKEND_API_URL}/Section`, {
+
+    await window.fetch(`${env.PUBLIC_BACKEND_API_URL}/Section`, {
         method: 'post',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(body)
     })
-    return await response.json()
 }
 
 export function idToChar(id: number) {
