@@ -1,6 +1,6 @@
 <script>
     import Toasts from "../components/Toasts.svelte";
-    import {getRecommendation, idToChar, idToDiff} from "../services/RecommendationBackendService.js";
+    import {getRecommendation, idToChar, idToDiff} from "../services/RecommendationBackendService";
     import {env} from "$env/dynamic/public";
     import PrivacyNotice from "../components/PrivacyNotice.svelte";
 
